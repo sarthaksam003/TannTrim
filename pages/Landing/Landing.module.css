@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@200;400&display=swap");
+
+.layout {
+  color: #0c0c0c;
+  background-color: #0c0c0c;
+  /* height: 100vh; */
+  margin-top: 8.1em;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+.carousel {
+}
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+  color: #e5dfd9;
+}
+.carousel-item p {
+  margin-top: 21px;
+}
+.breadcrumbs-and-filter {
+  margin-top: 37px;
+  display: flex;
+  justify-content: space-between;
+  margin: 37px 32px;
+}
+.breadcrumbs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e5dfd9;
+  font-family: "Encode Sans";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  width: 151px;
+}
+.filter {
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #e5dfd9;
+  width: 151px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  letter-spacing: 0.1em;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.product-card {
+  margin-bottom: 32px;
+}
+@media only screen and (max-width: 600px) {
+  .layout {
+    color: #0c0c0c;
+    background-color: #0c0c0c;
+    margin-top: 4.7em;
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+}

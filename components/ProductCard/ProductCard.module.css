@@ -1,0 +1,110 @@
+.product-card-layout:first-child {
+  /* margin-left: 32px; */
+}
+.product-card-layout:not(:first-child) {
+  /* margin-left: 16px; */
+}
+.product-card-layout {
+  position: relative;
+  /* border: 2px solid red; */
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 27px;
+  width: 280.15px;
+  height: 483.43px;
+}
+.product-image {
+  height: 373.25848388671875px;
+  width: 280.1498718261719px;
+}
+.product-name {
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  /* identical to box height */
+  letter-spacing: 0.05em;
+
+  color: #e5dfd9;
+}
+.card-details {
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.discounted-price {
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18.7905px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #e5dfd9;
+}
+.price {
+  display: flex;
+  width: 150px;
+  height: 23px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.add-to-bag {
+  width: 35.87px;
+  height: 43.45px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-price {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 154px;
+  /* border: 2px solid red; */
+}
+.original-price-and-discount {
+  display: flex;
+  align-items: center;
+}
+.original-price {
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.9576px;
+  line-height: 15px;
+  text-align: right;
+  text-decoration-line: line-through;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #e5dfd9;
+}
+.discount-percent {
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.9576px;
+  line-height: 15px;
+
+  font-feature-settings: "tnum" on, "lnum" on;
+
+  color: #2fc14f;
+}
+
+.saveProduct {
+  position: absolute;
+  top: 17.41px;
+  right: 17.41px;
+  cursor: pointer;
+}
