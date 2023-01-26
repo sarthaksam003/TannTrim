@@ -1,11 +1,21 @@
 import classes from "./Header.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
-const Header = () => {
+import CartContext from "@/store/cart-context";
+import savedProductsContext from "@/store/savedProducts-context";
+
+const Header = (props) => {
   const [sidebarOpen, toggleSidebarOpen] = useState(false);
   const sidebarHandler = () => {
     toggleSidebarOpen(!sidebarOpen);
   };
+  const cartCtx = useContext(CartContext);
+  const savedProductsCtx = useContext(savedProductsContext);
+  // const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
+  //   return curNumber + item.amount;
+  // }, 0);
+  const numberOfCartItems = cartCtx.items.length;
+  const numberOfSavedItems = savedProductsCtx.savedProducts.length;
   return (
     <div className={classes["layout"]}>
       <div className={classes["hamburger"]} onClick={sidebarHandler}>
@@ -40,20 +50,38 @@ const Header = () => {
               height={24}
               className={classes["interactables-mob-icon"]}
             />
-            <Image
-              src="/bookmark.svg"
-              alt="bookmark"
-              width={24}
-              height={24}
-              className={classes["interactables-mob-icon"]}
-            />
-            <Image
-              src="/shopping-bag.svg"
-              alt="shopping-bag"
-              width={24}
-              height={24}
-              className={classes["interactables-mob-icon"]}
-            />
+            <div>
+              <div className={classes["saved-products-btn"]}>
+                <Image
+                  src="/bookmark.svg"
+                  alt="bookmark"
+                  width={24}
+                  height={24}
+                  className={classes["interactables-mob-icon"]}
+                  onClick={props.toggleSavedProductsModal}
+                />
+                {numberOfSavedItems > 0 && (
+                  <span className={classes["saved-products-badge"]}>
+                    {numberOfSavedItems}
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className={classes["saved-products-btn"]}>
+              <Image
+                src="/shopping-bag.svg"
+                alt="shopping-bag"
+                width={24}
+                height={24}
+                className={classes["interactables-mob-icon"]}
+                onClick={props.toggleCartModal}
+              />
+              {numberOfCartItems > 0 && (
+                <span className={classes["cart-badge"]}>
+                  {numberOfCartItems}
+                </span>
+              )}
+            </div>
           </div>
           <div className={classes["box2-mob"]}>
             <ul>
@@ -72,13 +100,34 @@ const Header = () => {
           <div className={classes["interactables"]}>
             <Image src="search.svg" alt="search" width={24} height={24} />
             <Image src="/alt-user.svg" alt="alt-user" width={24} height={24} />
-            <Image src="/bookmark.svg" alt="bookmark" width={24} height={24} />
-            <Image
-              src="/shopping-bag.svg"
-              alt="shopping-bag"
-              width={24}
-              height={24}
-            />
+            <div className={classes["saved-products-btn"]}>
+              <Image
+                src="/bookmark.svg"
+                alt="bookmark"
+                width={24}
+                height={24}
+                onClick={props.toggleSavedProductsModal}
+              />
+              {numberOfSavedItems > 0 && (
+                <span className={classes["saved-products-badge"]}>
+                  {numberOfSavedItems}
+                </span>
+              )}
+            </div>
+            <div className={classes["cart-btn"]}>
+              <Image
+                src="/shopping-bag.svg"
+                alt="shopping-bag"
+                width={24}
+                height={24}
+                onClick={props.toggleCartModal}
+              />
+              {numberOfCartItems > 0 && (
+                <span className={classes["cart-badge"]}>
+                  {numberOfCartItems}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div className={classes["box2"]}>

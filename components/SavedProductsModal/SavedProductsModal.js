@@ -1,53 +1,82 @@
-import * as React from "react";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React, { useContext } from "react";
+import classes from "./SavedProductsModal.module.css";
+import SavedProductsContext from "@/store/savedProducts-context";
+import { Button } from "@mui/material";
+import CartContext from "@/store/cart-context";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+export default function SavedProductsModal(props) {
+  const savedProductsCtx = useContext(SavedProductsContext);
+  const cartCtx = useContext(CartContext);
 
-export default function TransitionsModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const printSavedProducts = () => {
+    // console.log(savedProductsCtx.savedProducts);
+  };
+  const addToCartHandler = (product) => {
+    cartCtx.addItem(product);
+  };
+  const removeFromSavedProductsHandler = (id) => {
+    // console.log(id);
+    savedProductsCtx.removeItem(id);
+  };
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Fade>
-      </Modal>
+    <div className={classes["backdrop"]}>
+      <div className={classes["modal"]} onClick={printSavedProducts}>
+        <img
+          src="/closeIconblack.svg"
+          alt="closeIconblack"
+          onClick={props.toggleSavedProductsModal}
+          className={classes["close-icon"]}
+        />
+        <div className={classes["saved-items"]}>
+          <h3>Saved Products</h3>
+          <div className={classes["saved-item-div"]}>
+            {savedProductsCtx.savedProducts.length > 0 ? (
+              savedProductsCtx.savedProducts.map((savedProduct) => {
+                return (
+                  <div
+                    key={savedProduct.id}
+                    className={classes["single-saved-item"]}
+                  >
+                    <div>
+                      {savedProduct.id}. {savedProduct.name}
+                    </div>
+                    <div>
+                      <Button
+                        variant="contained"
+                        className={classes["add-to-cart-btn"]}
+                        onClick={() => {
+                          addToCartHandler({
+                            id: savedProduct.id,
+                            name: savedProduct.name,
+                            price: savedProduct.price,
+                            quantity: 1,
+                          });
+                        }}
+                      >
+                        Add to Cart
+                      </Button>
+                      <Button
+                        variant="contained"
+                        className={classes["add-to-cart-btn"]}
+                        onClick={() => {
+                          removeFromSavedProductsHandler(savedProduct.id);
+                        }}
+                      >
+                        Unsave
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className={classes["no-products-saved"]}>
+                No products saved
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -4,6 +4,11 @@ import "react-multi-carousel/lib/styles.css";
 import { responsive } from "../../components/Carousel/responsive";
 import Image from "next/image";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import Brown from "../../public/Brown.png";
+import Grey from "../../public/grey.png";
+import Black from "../../public/black.png";
+import Black2 from "../../public/black2.png";
+
 const Landing = () => {
   return (
     <div className={classes["layout"]}>
@@ -113,13 +118,62 @@ const Landing = () => {
         </div>
       </div>
       <div className={classes["products"]}>
-        <ProductCard className={classes["product-card"]} />
-        <ProductCard className={classes["product-card"]} />
-        <ProductCard className={classes["product-card"]} />
-        <ProductCard className={classes["product-card"]} />
-        <ProductCard className={classes["product-card"]} />
-        <ProductCard className={classes["product-card"]} />
-        <ProductCard className={classes["product-card"]} />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Brown}
+          id={1}
+          name={"The Brown Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black}
+          id={2}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black2}
+          id={3}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Grey}
+          id={4}
+          name={"The Grey Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Brown}
+          id={5}
+          name={"The Brown Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black}
+          id={6}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black2}
+          id={7}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Grey}
+          id={8}
+          name={"The Grey Metro Movers"}
+          price={4899}
+        />
       </div>
     </div>
   );

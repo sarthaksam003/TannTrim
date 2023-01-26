@@ -1,10 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@200;400&display=swap");
 
 .layout {
-  /* padding: 0.75em 0.75em 0 0.75em; */
   font-family: "Encode Sans", sans-serif;
   background-color: #0c0c0c;
-  /* background-color: red; */
   position: fixed;
   top: 0;
   width: 100%;
@@ -16,30 +14,25 @@
 .box1 {
   display: flex;
   justify-content: space-between;
-  /* border: 2px solid red; */
 }
 .logo {
-  /* letter-spacing: 0.4em;
-  font-size: 0.8em;
-  font-weight: 100;
-  margin-left: 1em; */
   font-weight: 200;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   display: flex;
   align-items: center;
   letter-spacing: 0.55em;
   color: #e5dfd9;
   cursor: pointer;
-  margin: 19px 50px 22px 50px;
+  margin: 1.1875rem 3.125rem 1.375rem 3.125rem;
 
   text-transform: uppercase;
 }
 .interactables {
   display: flex;
   justify-content: space-between;
-  margin: 24px 30px;
-  width: 161px;
+  margin: 1.5rem 1.875rem;
+  width: 10.0625rem;
 }
 .interactables img {
   cursor: pointer;
@@ -48,27 +41,74 @@
 .box2 {
   display: flex;
   justify-content: center;
-  /* border: 2px solid red; */
-  margin-top: 22px;
-  margin-bottom: 18px;
+  margin-top: 1.375rem;
+  margin-bottom: 1.125rem;
 }
 
 .box2 ul {
   list-style-type: none;
   display: flex;
-  /* border: 2px solid red; */
 }
 .box2 ul li {
   font-weight: 200;
   margin: 0 1.4em;
   font-size: 0.6em;
   cursor: pointer;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
   letter-spacing: 0.1em;
-  /* border: 2px solid red; */
 }
-
+.saved-products-btn {
+  position: relative;
+}
+.cart-btn {
+  position: relative;
+}
+.saved-products-badge {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5dfd9;
+  color: black;
+  padding: 1px;
+  top: -0.3125rem;
+  right: -0.75rem;
+  font-size: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10rem;
+  font-weight: 700;
+}
+.saved-products-badge-mob {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5dfd9;
+  color: black;
+  padding: 1px;
+  font-size: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10rem;
+  font-weight: 700;
+}
+.cart-badge {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5dfd9;
+  color: black;
+  padding: 1px;
+  top: -5px;
+  right: -0.75rem;
+  font-size: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10rem;
+  font-weight: 700;
+}
 .sidebar-layout {
   position: fixed;
   z-index: 2;
@@ -76,7 +116,6 @@
   height: 100%;
   top: 4.7em;
   left: 0;
-  /* border: 2px solid yellow; */
   background-color: #0c0c0c;
   animation: sidebar-slide 0.3s ease-in-out;
 }
@@ -84,11 +123,10 @@
 .sidebar-close {
   cursor: pointer;
   margin: 1em;
-  width: 30px;
+  width: 1.875rem;
 }
 .interactables-mob {
   display: flex;
-  /* border: 2px solid red; */
   margin: 1em;
   justify-content: space-evenly;
 }
@@ -96,10 +134,8 @@
   cursor: pointer;
 }
 .box2-mob {
-  /* height: 80%; */
   width: 99%;
   height: 70%;
-  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;

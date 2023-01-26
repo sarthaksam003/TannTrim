@@ -1,53 +1,77 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Image from "next/image";
 import classes from "./ProductCard.module.css";
-export default function MediaCard() {
+import CartContext from "@/store/cart-context";
+import savedProductsContext from "@/store/savedProducts-context";
+export default function ProductCard(props) {
   const [productSaved, setProductSaved] = useState(false);
+  const cartCtx = useContext(CartContext);
+  const savedProductsCtx = useContext(savedProductsContext);
+
+  const addProductToCartHandler = () => {
+    cartCtx.addItem({
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      quantity: 1,
+    });
+  };
+
+  const addProductToSavedProductsHandler = () => {
+    savedProductsCtx.addItem({
+      id: props.id,
+      name: props.name,
+      price: props.price,
+    });
+    setProductSaved(!productSaved);
+  };
+  const removeProductFromSavedProductsHandler = () => {
+    savedProductsCtx.removeItem(props.id);
+    setProductSaved(!productSaved);
+  };
+
   return (
     <div className={classes["product-card-layout"]}>
-      <Card
-        style={{
-          width: "280.15px",
-          height: "482.43px",
-          backgroundColor: "#141414",
-          borderRadius: "8px",
-        }}
-      >
-        <div className={classes["product-image"]}>
-          <img
-            src="/card-imgm.png"
-            alt="card-image"
-            style={{ width: "100%" }}
-          />
-        </div>
-        <CardContent sx={{ backgroundColor: "#141414" }}>
-          <div className={classes["product-name"]}>The Brown Metro Movers</div>
+      <Card>
+        <Image
+          src={props.img}
+          alt="card-image"
+          className={classes["product-image"]}
+        />
+        <CardContent
+          sx={{
+            backgroundColor: "#141414",
+            marginTop: "-4px",
+          }}
+        >
+          <div className={classes["product-name"]}>{props.name}</div>
           <div className={classes["product-details"]}>
             <div className={classes["price"]}>
-              <p className={classes["discounted-price"]}>₹ 4899</p>
+              <p className={classes["discounted-price"]}>₹ {props.price}</p>
               <div className={classes["original-price-and-discount"]}>
-                <p className={classes["original-price"]}>8999&nbsp;</p>
+                <p className={classes["original-price"]}>8999</p>
                 <p className={classes["discount-percent"]}>&nbsp;(50% off)</p>
               </div>
             </div>
-            <div className={classes["add-to-bag"]}>
+            <div
+              className={classes["add-to-bag"]}
+              onClick={addProductToCartHandler}
+            >
               <img src="/addToBag.svg" alt="addToBag" />
             </div>
           </div>
         </CardContent>
       </Card>
-      <div
-        className={classes["saveProduct"]}
-        onClick={() => setProductSaved(!productSaved)}
-      >
+      <div className={classes["saveProduct"]}>
         {productSaved ? (
           <Image
             src="/productSaved.png"
             width={26}
             height={34}
             alt="saveProduct"
+            onClick={removeProductFromSavedProductsHandler}
           ></Image>
         ) : (
           <Image
@@ -55,6 +79,7 @@ export default function MediaCard() {
             width={26}
             height={34}
             alt="saveProduct"
+            onClick={addProductToSavedProductsHandler}
           ></Image>
         )}
       </div>

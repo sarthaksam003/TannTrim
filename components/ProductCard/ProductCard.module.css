@@ -1,12 +1,5 @@
-.product-card-layout:first-child {
-  /* margin-left: 32px; */
-}
-.product-card-layout:not(:first-child) {
-  /* margin-left: 16px; */
-}
 .product-card-layout {
   position: relative;
-  /* border: 2px solid red; */
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 27px;
@@ -23,7 +16,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
-  /* identical to box height */
   letter-spacing: 0.05em;
 
   color: #e5dfd9;
@@ -45,8 +37,7 @@
   display: flex;
   align-items: center;
   text-align: right;
-  font-feature-settings: "tnum" on, "lnum" on;
-
+ 
   color: #e5dfd9;
 }
 .price {
