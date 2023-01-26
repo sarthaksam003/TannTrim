@@ -1,8 +1,8 @@
-import Header from "@/components/Header/Header";
+import Header from "./components/Header/Header";
 import React, { useState } from "react";
 import Landing from "./Landing/Landing";
 import SavedProductsModal from "../components/SavedProductsModal/SavedProductsModal";
-import CartModal from "@/components/CartModal/CartModal";
+import CartModal from "./components/CartModal/CartModal";
 
 function HomePage() {
   const [cartModalOpen, setCartModalOpen] = useState(false);

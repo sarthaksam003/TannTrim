@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import classes from "./CartModal.module.css";
-import CartContext from "@/store/Cart-context";
+import CartContext from "./store/Cart-context";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
