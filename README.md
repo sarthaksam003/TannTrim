@@ -14,7 +14,9 @@
   <a href="#credits">Credits</a> •
 </p>
 
-<img src = "https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefile.gif" alt="TannTrim-gif" style="text-align:center"></img>
+<div style="text-align:center,display:block">
+<img src = "https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefile.gif" alt="TannTrim-gif" ></img>
+</div>
 
 ## Key Features
 
