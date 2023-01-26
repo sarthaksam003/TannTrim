@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="/readmefileicon.png" alt="TannTrim" width="200"></a>
+  <a href="#"><img src="https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefileicon.png" alt="TannTrim" width="200"></a>
   <br>
   TannTrim
   <br>
@@ -14,7 +14,7 @@
   <a href="#credits">Credits</a> •
 </p>
 
-![screenshot](<url("./public/readmefile.gif")>)
+![screenshot](<url("https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefile.gif")>)
 
 ## Key Features
 
