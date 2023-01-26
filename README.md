@@ -14,7 +14,7 @@
   <a href="#credits">Credits</a> •
 </p>
 
-![screenshot](<url("https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefile.gif")>)
+![screenshot]("https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefile.gif")
 
 ## Key Features
 
