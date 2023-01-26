@@ -174,6 +174,62 @@ const Landing = () => {
           name={"The Grey Metro Movers"}
           price={4899}
         />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Brown}
+          id={5}
+          name={"The Brown Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black}
+          id={6}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black2}
+          id={7}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Grey}
+          id={8}
+          name={"The Grey Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Brown}
+          id={5}
+          name={"The Brown Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black}
+          id={6}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Black2}
+          id={7}
+          name={"The Black Metro Movers"}
+          price={4899}
+        />
+        <ProductCard
+          className={classes["product-card"]}
+          img={Grey}
+          id={8}
+          name={"The Grey Metro Movers"}
+          price={4899}
+        />
       </div>
     </div>
   );

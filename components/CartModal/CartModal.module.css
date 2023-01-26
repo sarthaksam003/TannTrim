@@ -42,7 +42,6 @@
   list-style-type: none;
 }
 .no-items-in-cart {
-  /* border: 2px solid red; */
   font-size: 1.5em;
   position: absolute;
   top: 50%;
@@ -54,6 +53,8 @@
   margin-top: 2em;
   margin-bottom: 2em;
   font-family: "Encode Sans", sans-serif;
+  max-height: 20rem;
+  overflow-y: auto;
 }
 .cart-actions {
   width: 70%;

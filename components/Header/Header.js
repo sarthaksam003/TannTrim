@@ -1,8 +1,8 @@
 import classes from "./Header.module.css";
 import { useContext, useState } from "react";
 import Image from "next/image";
-import CartContext from "./store/Cart-context";
-import savedProductsContext from "./store/SavedProducts-context";
+import CartContext from "../../store/Cartcontext";
+import savedProductsContext from "../../store/SavedProductscontext";
 
 const Header = (props) => {
   const [sidebarOpen, toggleSidebarOpen] = useState(false);
@@ -63,11 +63,14 @@ const Header = (props) => {
                   className={classes["interactables-mob-icon"]}
                   onClick={props.toggleSavedProductsModal}
                 />
-                {numberOfSavedItems > 0 && (
-                  <span className={classes["saved-products-badge"]}>
-                    {numberOfSavedItems}
-                  </span>
-                )}
+                {numberOfSavedItems > 0 &&
+                  (numberOfSavedItems < 9 ? (
+                    <span className={classes["saved-products-badge"]}>
+                      {numberOfSavedItems}
+                    </span>
+                  ) : (
+                    <span className={classes["saved-products-badge"]}>9+</span>
+                  ))}
               </div>
             </div>
             <div className={classes["saved-products-btn"]}>
@@ -79,11 +82,14 @@ const Header = (props) => {
                 className={classes["interactables-mob-icon"]}
                 onClick={props.toggleCartModal}
               />
-              {numberOfCartItems > 0 && (
-                <span className={classes["cart-badge"]}>
-                  {numberOfCartItems}
-                </span>
-              )}
+              {numberOfCartItems > 0 &&
+                (numberOfCartItems < 9 ? (
+                  <span className={classes["cart-badge"]}>
+                    {numberOfCartItems}
+                  </span>
+                ) : (
+                  <span className={classes["cart-badge"]}>9+</span>
+                ))}
             </div>
           </div>
           <div className={classes["box2-mob"]}>
@@ -111,11 +117,19 @@ const Header = (props) => {
                 height={24}
                 onClick={props.toggleSavedProductsModal}
               />
-              {numberOfSavedItems > 0 && (
-                <span className={classes["saved-products-badge"]}>
-                  {numberOfSavedItems}
-                </span>
-              )}
+              {numberOfSavedItems > 0 &&
+                (numberOfSavedItems < 9 ? (
+                  <span className={classes["saved-products-badge"]}>
+                    {numberOfSavedItems}
+                  </span>
+                ) : (
+                  <span
+                    className={classes["saved-products-badge"]}
+                    style={{ fontSize: "10px" }}
+                  >
+                    9+
+                  </span>
+                ))}
             </div>
             <div className={classes["cart-btn"]}>
               <Image
@@ -125,11 +139,19 @@ const Header = (props) => {
                 height={24}
                 onClick={props.toggleCartModal}
               />
-              {numberOfCartItems > 0 && (
-                <span className={classes["cart-badge"]}>
-                  {numberOfCartItems}
-                </span>
-              )}
+              {numberOfCartItems > 0 &&
+                (numberOfCartItems < 9 ? (
+                  <span className={classes["cart-badge"]}>
+                    {numberOfCartItems}
+                  </span>
+                ) : (
+                  <span
+                    className={classes["cart-badge"]}
+                    style={{ fontSize: "10px" }}
+                  >
+                    9+
+                  </span>
+                ))}
             </div>
           </div>
         </div>

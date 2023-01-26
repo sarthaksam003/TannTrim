@@ -38,6 +38,8 @@
 .saved-item-div {
   width: 80%;
   margin: 2.5em;
+  max-height: 20rem;
+  overflow-y: auto;
 }
 .single-saved-item {
   display: flex;
