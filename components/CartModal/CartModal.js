@@ -10,6 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
+import Image from "next/image";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,11 +42,13 @@ export default function CartModal(props) {
   return (
     <div className={classes["backdrop"]}>
       <div className={classes["modal"]}>
-        <img
+        <Image
           src="/closeIconblack.svg"
           alt="closeIconblack"
           onClick={props.toggleCartModal}
           className={classes["close-icon"]}
+          width={30}
+          height={30}
         />
         <div className={classes["saved-items"]}>
           <h3>Cart Items</h3>
@@ -82,16 +85,6 @@ export default function CartModal(props) {
                           <div className={classes["quantity-and-actions"]}>
                             <span>{row.quantity}</span>
                             <div className={classes["add-or-remove-actions"]}>
-                              {/* <img
-                                src="/addIcon.svg"
-                                alt="addIcon"
-                                width={20}
-                              />
-                              <img
-                                src="/removeIcon.svg"
-                                alt="removeIcon"
-                                width={10}
-                              /> */}
                               <button
                                 variant="contained"
                                 className={classes["add-remove-btn"]}

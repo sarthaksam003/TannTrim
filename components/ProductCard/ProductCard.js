@@ -59,7 +59,12 @@ export default function ProductCard(props) {
               className={classes["add-to-bag"]}
               onClick={addProductToCartHandler}
             >
-              <img src="/addToBag.svg" alt="addToBag" />
+              <Image
+                src="/addToBag.svg"
+                alt="addToBag"
+                width={45}
+                height={45}
+              />
             </div>
           </div>
         </CardContent>

@@ -20,16 +20,21 @@ const Header = (props) => {
     <div className={classes["layout"]}>
       <div className={classes["hamburger"]} onClick={sidebarHandler}>
         {sidebarOpen ? (
-          <img
+          <Image
             src="Icon_-_Close_-_white.svg"
             className={classes["sidebar-close"]}
             onClick={sidebarHandler}
+            alt={"closeIcon"}
+            width={30}
+            height={30}
           />
         ) : (
-          <img
+          <Image
             src="/Hamburger_icon_white.svg"
             className={classes["sidebar-close"]}
-            // style={{ fontSize: 25, color: "white" }}
+            alt={"hamburgerIconF"}
+            width={30}
+            height={30}
           />
         )}
       </div>

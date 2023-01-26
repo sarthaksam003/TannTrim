@@ -3,6 +3,7 @@ import classes from "./SavedProductsModal.module.css";
 import SavedProductsContext from "@/store/savedProducts-context";
 import { Button } from "@mui/material";
 import CartContext from "@/store/cart-context";
+import Image from "next/image";
 
 export default function SavedProductsModal(props) {
   const savedProductsCtx = useContext(SavedProductsContext);
@@ -22,11 +23,13 @@ export default function SavedProductsModal(props) {
   return (
     <div className={classes["backdrop"]}>
       <div className={classes["modal"]} onClick={printSavedProducts}>
-        <img
+        <Image
           src="/closeIconblack.svg"
           alt="closeIconblack"
           onClick={props.toggleSavedProductsModal}
           className={classes["close-icon"]}
+          width={30}
+          height={30}
         />
         <div className={classes["saved-items"]}>
           <h3>Saved Products</h3>
