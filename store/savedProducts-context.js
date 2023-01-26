@@ -1,9 +1,9 @@
 import React from "react";
 
-const savedProductsContext = React.createContext({
+const SavedProductsContext = React.createContext({
   savedProducts: [],
   addItem: (item) => {},
   removeItem: (id) => {},
 });
 
-export default savedProductsContext;
+export default SavedProductsContext;

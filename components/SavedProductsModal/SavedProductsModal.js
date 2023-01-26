@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import classes from "./SavedProductsModal.module.css";
-import SavedProductsContext from "./store/savedProducts-context";
+import SavedProductsContext from "@/store/SavedProducts-context";
 import { Button } from "@mui/material";
-import CartContext from "./store/cart-context";
+import CartContext from "@/store/Cart-context";
 import Image from "next/image";
 
 export default function SavedProductsModal(props) {

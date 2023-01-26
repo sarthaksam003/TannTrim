@@ -1,8 +1,8 @@
 import classes from "./Header.module.css";
 import { useContext, useState } from "react";
 import Image from "next/image";
-import CartContext from "./store/cart-context";
-import savedProductsContext from "./store/savedProducts-context";
+import CartContext from "@/store/Cart-context";
+import savedProductsContext from "@/store/SavedProducts-context";
 
 const Header = (props) => {
   const [sidebarOpen, toggleSidebarOpen] = useState(false);
@@ -11,9 +11,7 @@ const Header = (props) => {
   };
   const cartCtx = useContext(CartContext);
   const savedProductsCtx = useContext(savedProductsContext);
-  // const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
-  //   return curNumber + item.amount;
-  // }, 0);
+
   const numberOfCartItems = cartCtx.items.length;
   const numberOfSavedItems = savedProductsCtx.savedProducts.length;
   return (

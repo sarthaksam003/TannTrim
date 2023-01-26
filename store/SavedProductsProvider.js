@@ -1,5 +1,5 @@
-import SavedProductsContext from "./savedProducts-context";
-import { useContext, useReducer } from "react";
+import SavedProductsContext from "./SavedProducts-context";
+import { useReducer } from "react";
 
 const initialSavedProductsState = {
   savedProducts: [],

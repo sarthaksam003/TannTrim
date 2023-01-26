@@ -3,8 +3,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Image from "next/image";
 import classes from "./ProductCard.module.css";
-import CartContext from "@/store/cart-context";
-import savedProductsContext from "./store/savedProducts-context";
+import CartContext from "@/store/Cart-context";
+import savedProductsContext from "@/store/SavedProducts-context";
 export default function ProductCard(props) {
   const [productSaved, setProductSaved] = useState(false);
   const cartCtx = useContext(CartContext);
@@ -39,6 +39,7 @@ export default function ProductCard(props) {
           src={props.img}
           alt="card-image"
           className={classes["product-image"]}
+          priority={true}
         />
         <CardContent
           sx={{
