@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Image from "next/image";
 import classes from "./ProductCard.module.css";
 import CartContext from "@/store/cart-context";
-import savedProductsContext from "@/store/savedProducts-context";
+import savedProductsContext from "./store/savedProducts-context";
 export default function ProductCard(props) {
   const [productSaved, setProductSaved] = useState(false);
   const cartCtx = useContext(CartContext);

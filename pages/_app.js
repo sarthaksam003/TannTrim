@@ -1,7 +1,7 @@
-import "@/styles/globals.css";
+import "./styles/globals.css";
 import Head from "next/head";
-import CartProvider from "@/store/CartProvider";
-import SavedProductsProvider from "@/store/savedProductsProvider";
+import CartProvider from "./store/CartProvider";
+import SavedProductsProvider from "./store/savedProductsProvider";
 export default function App({ Component, pageProps }) {
   return (
     <CartProvider>

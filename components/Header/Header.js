@@ -1,8 +1,8 @@
 import classes from "./Header.module.css";
 import { useContext, useState } from "react";
 import Image from "next/image";
-import CartContext from "@/store/cart-context";
-import savedProductsContext from "@/store/savedProducts-context";
+import CartContext from "./store/cart-context";
+import savedProductsContext from "./store/savedProducts-context";
 
 const Header = (props) => {
   const [sidebarOpen, toggleSidebarOpen] = useState(false);
