@@ -14,7 +14,7 @@
   <a href="#credits">Credits</a> •
 </p>
 
-![]("https://github.com/sarthaksam003/TannTrim/blob/main/public/readmefile.gif")
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 ## Key Features
 
