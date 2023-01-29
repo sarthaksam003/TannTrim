@@ -83,7 +83,6 @@ const ProductDetailModal = (props) => {
     if (reason === "clickaway") {
       return;
     }
-    console.log(reviewsArray);
     setAlertVisibility(false);
   };
 
@@ -101,14 +100,17 @@ const ProductDetailModal = (props) => {
         <div className={classes["product-modal-content-layout"]}>
           <div className={classes["carousel"]}>
             <Carousel>
-              {images.map((item, i) => (
-                <img
-                  key={i}
-                  src={item}
-                  alt={`item-${i}`}
-                  onError={addDefaultImage}
-                />
-              ))}
+              {images.map((item, i = 0) => {
+                i++;
+                return (
+                  <img
+                    key={i}
+                    src={item}
+                    alt={`item-${i}`}
+                    onError={addDefaultImage}
+                  />
+                );
+              })}
             </Carousel>
           </div>
           <div className={classes["product-reviews"]}>
@@ -145,9 +147,10 @@ const ProductDetailModal = (props) => {
                     }}
                   >
                     {productDetailsCtx.productDetails.productDetails[0].sizes.map(
-                      (size) => {
+                      (size, idx = 0) => {
+                        idx++;
                         return (
-                          <MenuItem value={size} key={size}>
+                          <MenuItem value={size} key={idx}>
                             {size}
                           </MenuItem>
                         );
@@ -229,7 +232,8 @@ const ProductDetailModal = (props) => {
         <div className={classes["reviews-section"]}>
           <h3 style={{ margin: "2rem" }}>Reviews</h3>
           <div className={classes["review-from-users"]}>
-            {reviewsArray.map((reviewer) => {
+            {reviewsArray.map((reviewer, idx = 0) => {
+              idx++;
               const date = new Date(reviewer.created);
               const dateToSend =
                 date.getDate() +
@@ -249,7 +253,7 @@ const ProductDetailModal = (props) => {
                       : "Anonymous"
                   }
                   date={dateToSend}
-                  key={reviewer.first_name + reviewer.last_name}
+                  key={idx}
                 />
               );
             })}
