@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">A simple e-commerce web app created using ReactJS, HTML and CSS on Microsoft Visual Studio Code.</a>.</h4>
+<h4 align="center">A simple e-commerce web app created using ReactJS, HTML and CSS on Microsoft Visual Studio Code that fetches data to display using Axios.</a>.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -19,6 +19,8 @@
 </div>
 
 ## Key Features
+
+- Fetches products data using Axios API.
 
 - Gives users the ability to save products for adding to cart later in the saved products modal.
 
@@ -50,4 +52,5 @@ This software uses the following open source packages:
 
 - [Node.js](https://nodejs.org/)
 - [react-multi-carousel] [here](https://www.npmjs.com/package/react-multi-carousel)
+- [react-material-ui-carousel] [here](https://www.npmjs.com/package/react-material-ui-carousel)
 - MaterialUI components taken from [here](https://mui.com/material-ui/)

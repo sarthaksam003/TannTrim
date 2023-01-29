@@ -1,10 +1,12 @@
 .product-card-layout {
   position: relative;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 27px;
+  margin-left: 1rem;
+  margin-right: 4rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   width: 280.15px;
   height: 483.43px;
+  cursor: pointer;
 }
 .product-image {
   height: 373.25848388671875px;
@@ -17,7 +19,9 @@
   font-size: 16px;
   line-height: 26px;
   letter-spacing: 0.05em;
-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   color: #e5dfd9;
 }
 .card-details {
@@ -37,7 +41,7 @@
   display: flex;
   align-items: center;
   text-align: right;
- 
+
   color: #e5dfd9;
 }
 .price {

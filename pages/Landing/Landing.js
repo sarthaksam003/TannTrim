@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import classes from "./Landing.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -9,7 +11,25 @@ import Grey from "../../public/grey.png";
 import Black from "../../public/black.png";
 import Black2 from "../../public/black2.png";
 
-const Landing = () => {
+const Landing = (props) => {
+  const [itemsForSale, setItemsForSale] = useState([]);
+  const fetchData = async () => {
+    axios({
+      method: "get",
+      url: "https://api.tjori.com/api/v7filters/na/women-all-products/?f_page=1&format=json",
+      responseType: "stream",
+    }).then(function (response) {
+      let data = JSON.parse(response.data);
+      // console.log(data.data.products);
+      setItemsForSale(data.data.products);
+      // response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className={classes["layout"]}>
       <div className={classes["carousel"]}>
@@ -117,63 +137,29 @@ const Landing = () => {
           <Image src="/filter.svg" alt="filter" width={20} height={20}></Image>
         </div>
       </div>
-      <div className={classes["products"]}>
-        <ProductCard
-          className={classes["product-card"]}
-          img={Brown}
-          id={1}
-          name={"The Brown Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Black}
-          id={2}
-          name={"The Black Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Black2}
-          id={3}
-          name={"The Black Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Grey}
-          id={4}
-          name={"The Grey Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Brown}
-          id={5}
-          name={"The Brown Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Black}
-          id={6}
-          name={"The Black Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Black2}
-          id={7}
-          name={"The Black Metro Movers"}
-          price={4899}
-        />
-        <ProductCard
-          className={classes["product-card"]}
-          img={Grey}
-          id={8}
-          name={"The Grey Metro Movers"}
-          price={4899}
-        />
+      <div className={classes["products-layout"]}>
+        {itemsForSale.length !== 0 && (
+          <div className={classes["products"]}>
+            {itemsForSale.map((item) => {
+              return (
+                <ProductCard
+                  className={classes["product-card"]}
+                  img={item.image[0]}
+                  fallbackimg={item.image[1]}
+                  sizes={item.sizes}
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price_usd}
+                  fullprice={item.discount_usd}
+                  reviews={item.reviews}
+                  toggleVisibility={props.toggleVisibility}
+                  images={item.image}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

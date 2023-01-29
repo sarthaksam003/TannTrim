@@ -58,61 +58,64 @@ export default function CartModal(props) {
                 component={Paper}
                 sx={{ fontFamily: "Encode Sans" }}
               >
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                <Table aria-label="customized table">
                   <TableHead>
                     <TableRow>
-                      <StyledTableCell align="center">id</StyledTableCell>
+                      <StyledTableCell align="center">S. no.</StyledTableCell>
                       <StyledTableCell align="center">Product</StyledTableCell>
                       <StyledTableCell align="center">Price</StyledTableCell>
                       <StyledTableCell align="center">Quantity</StyledTableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {cartCtx.items.map((row) => (
-                      <StyledTableRow key={row.id}>
-                        <StyledTableCell
-                          align="center"
-                          component="th"
-                          scope="row"
-                        >
-                          {row.id}
-                        </StyledTableCell>
-                        <StyledTableCell>{row.name}</StyledTableCell>
-                        <StyledTableCell align="center">
-                          ₹ {row.price}
-                        </StyledTableCell>
-                        <StyledTableCell align="center">
-                          <div className={classes["quantity-and-actions"]}>
-                            <span>{row.quantity}</span>
-                            <div className={classes["add-or-remove-actions"]}>
-                              <button
-                                variant="contained"
-                                className={classes["add-remove-btn"]}
-                                onClick={() => {
-                                  addProductToCartHandler({
-                                    id: row.id,
-                                    name: row.name,
-                                    price: row.price,
-                                    quantity: row.quantity,
-                                  });
-                                }}
-                              >
-                                +
-                              </button>
-                              <button
-                                variant="contained"
-                                className={classes["add-remove-btn"]}
-                                onClick={() => {
-                                  removeProductFromCartHandler(row.id);
-                                }}
-                              >
-                                -
-                              </button>
+                    {cartCtx.items.map((row, idx = 0) => {
+                      idx += 1;
+                      return (
+                        <StyledTableRow key={row.id}>
+                          <StyledTableCell
+                            align="center"
+                            component="th"
+                            scope="row"
+                          >
+                            {idx++}
+                          </StyledTableCell>
+                          <StyledTableCell>{row.name}</StyledTableCell>
+                          <StyledTableCell align="center">
+                            $ {row.price}
+                          </StyledTableCell>
+                          <StyledTableCell align="center">
+                            <div className={classes["quantity-and-actions"]}>
+                              <span>{row.quantity}</span>
+                              <div className={classes["add-or-remove-actions"]}>
+                                <button
+                                  variant="contained"
+                                  className={classes["add-remove-btn"]}
+                                  onClick={() => {
+                                    addProductToCartHandler({
+                                      id: row.id,
+                                      name: row.name,
+                                      price: row.price,
+                                      quantity: row.quantity,
+                                    });
+                                  }}
+                                >
+                                  +
+                                </button>
+                                <button
+                                  variant="contained"
+                                  className={classes["add-remove-btn"]}
+                                  onClick={() => {
+                                    removeProductFromCartHandler(row.id);
+                                  }}
+                                >
+                                  -
+                                </button>
+                              </div>
                             </div>
-                          </div>
-                        </StyledTableCell>
-                      </StyledTableRow>
-                    ))}
+                          </StyledTableCell>
+                        </StyledTableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -133,20 +136,20 @@ export default function CartModal(props) {
               })}
             </ul>
           </div> */}
-          {cartCtx.items.length > 0 && (
-            <div className={classes["cart-actions"]}>
-              <div>Total: {cartCtx.totalAmount}</div>
-              <div>
-                <Button
-                  variant="contained"
-                  className={classes["place-order-btn"]}
-                >
-                  Place Order
-                </Button>
-              </div>
-            </div>
-          )}
         </div>
+        {cartCtx.items.length > 0 && (
+          <div className={classes["cart-actions"]}>
+            <div>Total: ${cartCtx.totalAmount}</div>
+            <div>
+              <Button
+                variant="contained"
+                className={classes["place-order-btn"]}
+              >
+                Place Order
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

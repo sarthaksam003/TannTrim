@@ -9,20 +9,16 @@ export default function SavedProductsModal(props) {
   const savedProductsCtx = useContext(SavedProductsContext);
   const cartCtx = useContext(CartContext);
 
-  const printSavedProducts = () => {
-    // console.log(savedProductsCtx.savedProducts);
-  };
   const addToCartHandler = (product) => {
     cartCtx.addItem(product);
   };
   const removeFromSavedProductsHandler = (id) => {
-    // console.log(id);
     savedProductsCtx.removeItem(id);
   };
 
   return (
     <div className={classes["backdrop"]}>
-      <div className={classes["modal"]} onClick={printSavedProducts}>
+      <div className={classes["modal"]}>
         <Image
           src="/closeIconblack.svg"
           alt="closeIconblack"
@@ -35,16 +31,17 @@ export default function SavedProductsModal(props) {
           <h3>Saved Products</h3>
           <div className={classes["saved-item-div"]}>
             {savedProductsCtx.savedProducts.length > 0 ? (
-              savedProductsCtx.savedProducts.map((savedProduct) => {
+              savedProductsCtx.savedProducts.map((savedProduct, idx = 0) => {
+                idx++;
                 return (
                   <div
                     key={savedProduct.id}
                     className={classes["single-saved-item"]}
                   >
-                    <div>
-                      {savedProduct.id}. {savedProduct.name}
+                    <div className={classes["saved-item-name"]}>
+                      {idx}. {savedProduct.name}
                     </div>
-                    <div>
+                    <div className={classes["saved-item-btn"]}>
                       <Button
                         variant="contained"
                         className={classes["add-to-cart-btn"]}

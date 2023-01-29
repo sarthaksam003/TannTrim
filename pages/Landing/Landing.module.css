@@ -59,16 +59,20 @@
   align-items: center;
   letter-spacing: 0.1em;
 }
-
+.products-layout {
+  padding-left: 2.5rem;
+  /* border: 2px solid red; */
+}
 .products {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin: 2.1325rem 1rem;
 }
 .product-card {
   flex: 1 1 auto !important;
   margin-bottom: 2rem;
+  /* margin-right: 12rem; */
 }
 @media only screen and (max-width: 600px) {
   .layout {
