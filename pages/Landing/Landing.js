@@ -6,10 +6,6 @@ import "react-multi-carousel/lib/styles.css";
 import { responsive } from "../../components/Carousel/responsive";
 import Image from "next/image";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import Brown from "../../public/Brown.png";
-import Grey from "../../public/grey.png";
-import Black from "../../public/black.png";
-import Black2 from "../../public/black2.png";
 
 const Landing = (props) => {
   const [itemsForSale, setItemsForSale] = useState([]);
@@ -20,9 +16,7 @@ const Landing = (props) => {
       responseType: "stream",
     }).then(function (response) {
       let data = JSON.parse(response.data);
-      // console.log(data.data.products);
       setItemsForSale(data.data.products);
-      // response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
     });
   };
 

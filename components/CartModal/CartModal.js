@@ -1,15 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./CartModal.module.css";
 import CartContext from "../../store/Cartcontext";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";
+import {
+  Button,
+  TableContainer,
+  Paper,
+  TableRow,
+  TableHead,
+  tableCellClasses,
+  TableCell,
+  TableBody,
+  Table,
+  Snackbar,
+  Alert,
+  styled,
+} from "@mui/material";
 import Image from "next/image";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -25,7 +30,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
@@ -33,11 +37,36 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function CartModal(props) {
   const cartCtx = useContext(CartContext);
+  const [alertVisibility, setAlertVisibility] = useState(false);
+  const [clearCartAlertVisibility, setClearCartAlertVisibility] =
+    useState(false);
+
   const addProductToCartHandler = (item) => {
     cartCtx.addItem(item);
   };
   const removeProductFromCartHandler = (id) => {
     cartCtx.removeItem(id);
+  };
+  const placeOrderhandler = () => {
+    console.log("Order placed by user: ", cartCtx.items);
+    setAlertVisibility(true);
+    cartCtx.clearCart();
+  };
+  const clearCartHandler = () => {
+    setClearCartAlertVisibility(true);
+    cartCtx.clearCart();
+  };
+  const closeAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlertVisibility(false);
+  };
+  const closeClearCartAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setClearCartAlertVisibility(false);
   };
   return (
     <div className={classes["backdrop"]}>
@@ -123,34 +152,53 @@ export default function CartModal(props) {
           ) : (
             <div className={classes["no-items-in-cart"]}>No items in cart</div>
           )}
-          {/* <div className={classes["saved-items-list"]}>
-            <ul className={classes["saved-items-ul"]}>
-              <li className={classes["saved-items-ul"]}></li>
-              {cartCtx.items.map((itemInCart) => {
-                return (
-                  <li key={itemInCart.id} className={classes["saved-items-li"]}>
-                    {itemInCart.id}. {itemInCart.name} = {itemInCart.price} X{" "}
-                    {itemInCart.quantity}
-                  </li>
-                );
-              })}
-            </ul>
-          </div> */}
         </div>
         {cartCtx.items.length > 0 && (
           <div className={classes["cart-actions"]}>
             <div>Total: ${cartCtx.totalAmount}</div>
-            <div>
+            <div className={classes["cart-actions-div"]}>
               <Button
                 variant="contained"
                 className={classes["place-order-btn"]}
+                onClick={placeOrderhandler}
               >
                 Place Order
+              </Button>
+              <Button
+                variant="contained"
+                className={classes["place-order-btn"]}
+                onClick={clearCartHandler}
+              >
+                Clear cart
               </Button>
             </div>
           </div>
         )}
       </div>
+      <Snackbar
+        open={alertVisibility}
+        autoHideDuration={3000}
+        onClose={closeAlert}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert onClose={closeAlert} severity="success" sx={{ width: "100%" }}>
+          Order placed successfully!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={clearCartAlertVisibility}
+        autoHideDuration={3000}
+        onClose={closeClearCartAlert}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={closeClearCartAlert}
+          severity="info"
+          sx={{ width: "100%" }}
+        >
+          Cart cleared
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

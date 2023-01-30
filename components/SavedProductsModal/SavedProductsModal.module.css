@@ -96,6 +96,15 @@
 .add-to-cart-btn:hover {
   background-color: #777777 !important;
 }
+.clear-cart-btn {
+  background-color: #070707 !important;
+  text-transform: capitalize !important;
+  font-family: "Encode Sans", sans-serif !important;
+  margin: 0.2em !important;
+}
+.clear-cart-btn:hover {
+  background-color: #777777 !important;
+}
 .quantity-and-actions {
   position: relative;
 }
@@ -144,6 +153,9 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   .add-to-cart-btn {
+    width: 100%;
+  }
+  .clear-cart-btn {
     width: 100%;
   }
   .saved-item-name {

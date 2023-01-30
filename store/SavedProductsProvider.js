@@ -28,6 +28,9 @@ const savedProductsReducer = (state, action) => {
       savedProducts: updatedSavedProducts,
     };
   }
+  if (action.type === "truncate") {
+    return initialSavedProductsState;
+  }
 
   return initialSavedProductsState;
 };
@@ -43,14 +46,15 @@ const SavedProductsProvider = (props) => {
   };
   const removeItemFromSavedProducts = (id) => {
     dispatchAction({ type: "remove", id: id });
-    // console.log("After removing saved products:");
-    // dispatchAction({ type: "print" });
   };
-
+  const truncateSavedProductsArray = () => {
+    dispatchAction({ type: "truncate" });
+  };
   const savedProductsContext = {
     savedProducts: savedProductsState.savedProducts,
     addItem: addItemToSavedProducts,
     removeItem: removeItemFromSavedProducts,
+    clearCart: truncateSavedProductsArray,
   };
   return (
     <SavedProductsContext.Provider value={savedProductsContext}>

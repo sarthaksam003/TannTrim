@@ -4,7 +4,6 @@ import Landing from "./Landing/Landing";
 import SavedProductsModal from "../components/SavedProductsModal/SavedProductsModal";
 import CartModal from "../components/CartModal/CartModal";
 import ProductDetailModal from "../components/ProductDetailModal/ProductDetailModal";
-import ProductsDetailsContext from "../store/ProductsDetailsContext";
 
 function HomePage() {
   const [cartModalOpen, setCartModalOpen] = useState(false);

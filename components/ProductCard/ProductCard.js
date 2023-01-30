@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import { Card, CardContent, Snackbar, Alert } from "@mui/material";
 import Image from "next/image";
 import classes from "./ProductCard.module.css";
 import CartContext from "../../store/Cartcontext";
@@ -9,6 +8,12 @@ import ProductsDetailsContext from "../../store/ProductsDetailsContext";
 
 export default function ProductCard(props) {
   const [productSaved, setProductSaved] = useState(false);
+  const [addedToCartAlertVisibility, setAddedToCartAlertVisibility] =
+    useState(false);
+  const [productSavedAlertVisibility, setProductSavedAlertVisibility] =
+    useState(false);
+  const [productUnsavedAlertVisibility, setProductUnsavedAlertVisibility] =
+    useState(false);
   const cartCtx = useContext(CartContext);
   const savedProductsCtx = useContext(savedProductsContext);
   const productsDetailsCtx = useContext(ProductsDetailsContext);
@@ -21,6 +26,7 @@ export default function ProductCard(props) {
       price: props.price,
       quantity: 1,
     });
+    setAddedToCartAlertVisibility(true);
   };
 
   const addProductToSavedProductsHandler = (e) => {
@@ -31,12 +37,14 @@ export default function ProductCard(props) {
       price: props.price,
     });
     setProductSaved(!productSaved);
+    setProductSavedAlertVisibility(true);
   };
 
   const removeProductFromSavedProductsHandler = (e) => {
     e.stopPropagation();
     savedProductsCtx.removeItem(props.id);
     setProductSaved(!productSaved);
+    setProductUnsavedAlertVisibility(true);
   };
 
   const setupProductDetailsModalHandler = () => {
@@ -60,7 +68,30 @@ export default function ProductCard(props) {
 
   const addDefaultImage = (e) => {
     e.target.src = props.fallbackimg;
-    // e.target.src = "/noimage.png";
+  };
+
+  const closeAddedToCartAlertHandler = (event, reason) => {
+    event.stopPropagation();
+    if (reason === "clickaway") {
+      return;
+    }
+    setAddedToCartAlertVisibility(false);
+  };
+
+  const closeProductSavedAlertHandler = (event, reason) => {
+    event.stopPropagation();
+    if (reason === "clickaway") {
+      return;
+    }
+    setProductSavedAlertVisibility(false);
+  };
+  const closeProductUnsavedAlertHandler = (event, reason) => {
+    event.stopPropagation();
+
+    if (reason === "clickaway") {
+      return;
+    }
+    setProductUnsavedAlertVisibility(false);
   };
 
   return (
@@ -73,7 +104,6 @@ export default function ProductCard(props) {
           src={props.img}
           alt="card-image"
           className={classes["product-image"]}
-          // priority={true}
           onError={addDefaultImage}
         />
         <CardContent
@@ -133,6 +163,50 @@ export default function ProductCard(props) {
             onClick={addProductToSavedProductsHandler}
           ></Image>
         )}
+      </div>
+      <div style={{ zIndex: "40" }}>
+        <Snackbar
+          open={addedToCartAlertVisibility}
+          autoHideDuration={3000}
+          onClose={closeAddedToCartAlertHandler}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        >
+          <Alert
+            onClose={closeAddedToCartAlertHandler}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Product added to cart!
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={productSavedAlertVisibility}
+          autoHideDuration={3000}
+          onClose={closeProductSavedAlertHandler}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        >
+          <Alert
+            onClose={closeProductSavedAlertHandler}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Product saved!
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={productUnsavedAlertVisibility}
+          autoHideDuration={3000}
+          onClose={closeProductSavedAlertHandler}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        >
+          <Alert
+            onClose={closeProductUnsavedAlertHandler}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Product unsaved!
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );

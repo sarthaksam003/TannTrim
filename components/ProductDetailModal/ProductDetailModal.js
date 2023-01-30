@@ -50,7 +50,6 @@ const ProductDetailModal = (props) => {
   const reviewsArray =
     productDetailsCtx.productDetails.productDetails[0].reviews;
 
-  const date = new Date("2019-01-03T18:30:00Z");
   const currentDate = new Date();
 
   const setSizeChosenHandler = (event) => {

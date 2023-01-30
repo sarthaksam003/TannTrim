@@ -27,19 +27,12 @@ const cartReducer = (state, action) => {
     }
     const updatedItems = state.items.concat(action.item);
 
-    // const updatedTotalAmount =
-    //   state.totalAmount + action.item.price * action.item.quantity;
-    // return {
-    //   items: updatedItems,
-    //   totalAmount: updatedTotalAmount,
-    // };
     return {
       items: updatedItems,
       totalAmount: state.totalAmount,
     };
   }
 
-  //idhar
   if (action.type === "calculate") {
     let updatedTotalAmount = 0;
 
@@ -71,16 +64,14 @@ const cartReducer = (state, action) => {
       updatedItems[idxOfCartItemToRemove] = updatedItem;
     }
 
-    // state.items.map((itemInCart) => {
-    //   updatedTotalAmount += itemInCart.price * itemInCart.quantity;
-    // });
-    // console.log(idxOfItemToRemove);
     return {
       items: updatedItems,
       totalAmount: updatedAmount,
     };
   }
-
+  if (action.type === "truncate") {
+    return initialCartState;
+  }
   return initialCartState;
 };
 
@@ -94,12 +85,16 @@ const CartProvider = (props) => {
   const removeItemFromCart = (id) => {
     dispatchAction({ type: "remove", id: id });
   };
+  const truncateItemsArrayFromCart = () => {
+    dispatchAction({ type: "truncate" });
+  };
 
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCart,
     removeItem: removeItemFromCart,
+    clearCart: truncateItemsArrayFromCart,
   };
   return (
     <CartContext.Provider value={cartContext}>

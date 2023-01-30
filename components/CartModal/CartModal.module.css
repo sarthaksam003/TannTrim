@@ -94,9 +94,10 @@
   background-color: #070707 !important;
   text-transform: capitalize !important;
   font-family: "Encode Sans", sans-serif !important;
+  margin-left: 0.5rem !important;
 }
 .place-order-btn:hover {
-  background-color: #777777!important;
+  background-color: #777777 !important;
 }
 .quantity-and-actions {
   position: relative;
@@ -141,5 +142,8 @@
     max-height: 35rem;
     overflow-y: scroll;
     width: 100%;
+  }
+  .cart-actions-div {
+    display: flex;
   }
 }
