@@ -151,7 +151,7 @@ export default function ProductCard(props) {
             src="/productSaved2.png"
             width={26}
             height={34}
-            alt="saveProduct"
+            alt="productSaved"
             onClick={removeProductFromSavedProductsHandler}
           ></Image>
         ) : (
