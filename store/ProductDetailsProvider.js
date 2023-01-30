@@ -1,4 +1,4 @@
-import ProductsDetailsContext from "./ProductsDetailsContext";
+import ProductsDetailsContext from "./ProductsDetailscontext";
 import { useReducer } from "react";
 
 const initialProductDetailsState = {

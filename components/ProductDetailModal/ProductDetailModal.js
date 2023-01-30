@@ -2,7 +2,7 @@ import React, { useContext, useState, useRef } from "react";
 import classes from "./ProductDetailModal.module.css";
 import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
-import ProductsDetailsContext from "../../store/ProductsDetailsContext";
+import ProductsDetailsContext from "../../store/ProductsDetailscontext";
 import CartContext from "../../store/Cartcontext";
 import {
   Button,

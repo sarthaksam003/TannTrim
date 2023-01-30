@@ -4,7 +4,7 @@ import Image from "next/image";
 import classes from "./ProductCard.module.css";
 import CartContext from "../../store/Cartcontext";
 import savedProductsContext from "../../store/SavedProductscontext";
-import ProductsDetailsContext from "../../store/ProductsDetailsContext";
+import ProductsDetailsContext from "../../store/ProductsDetailscontext";
 
 export default function ProductCard(props) {
   const [productSaved, setProductSaved] = useState(false);
