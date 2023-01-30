@@ -8,4 +8,5 @@ const CartContext = React.createContext({
   clearCart: () => {},
 });
 
+
 export default CartContext;
